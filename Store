@@ -1,0 +1,33 @@
+class Store(Product):
+
+
+    sales = []
+    purchases = [] 
+    inventory = Product.quantities
+
+
+    def __init__(self, ID, sale_price, purchase_price):
+        self.ID = ID
+        self.sale_price = sale_price
+        self.purchase_price = purchase_price 
+
+
+    def sell(self, quantity, date):
+
+        if quantity <= Store.inventory.get([self.ID]):
+            new_sale = [self.ID, self.sale_price, date, quantity]
+            Store.sales.append(new_sale) 
+            Store.inventory[self.ID] -= quantity
+
+        return 'Sorry, we ran out of this product' 
+
+
+    def buy(self, quantity, date):
+        new_purchase = [self.ID, self.purchase_price, date, quantity] 
+        Store.purchases.append(new_purchase) 
+        Store.inventory[self.ID] += quantity 
+
+
+    def get_inventory(cls):
+        return cls.inventory 
+
