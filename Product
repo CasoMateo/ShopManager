@@ -1,0 +1,24 @@
+class Product: 
+
+
+    quantities = {}
+
+
+    def __init__(self, name, price_sale, price_purchase, barcode, amount, type_price):
+        self.name = name                        
+        self.price_sale = price_sale
+        self.price_purchase = price_purchase
+        self.barcode = barcode 
+        self.amount = amount 
+        self.type_price = type_price 
+
+
+    def product_amounts(self, ID):
+        """The purpose of this method is to create an inventory
+                with products referenced by an id. """
+        product_amount = self.amount
+        Product.quantities[ID] = product_amount
+
+
+    def get_quantities(cls):
+        return cls.quantities 
