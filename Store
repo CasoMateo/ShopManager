@@ -30,4 +30,37 @@ class Store(Product):
 
     def get_inventory(cls):
         return cls.inventory 
+        
+
+id_ = int(input("Press your product's ID: ")) 
+sale_price_ = int(input("Press your product's sale price: ")) 
+purchase_price_ = int(input("Press your product's purchase price: ")) 
+
+p1 = Store(id_, sale_price_, purchase_price_) 
+
+while ans != 4:
+    print('---------MENU----------')
+    ans = int(input('Press 1 to sell, press 2 to buy, press 3 to look at your inventory and press 4 to exit: ')) 
+
+    if ans == 1: 
+        quantity = int(input('How many products of this type did you sell? '))
+        date = input('Date for which you sold this product: ')
+        
+        p1.sell(quantity, date) 
+        continue
+       
+    if ans == 2: 
+        quantity = int(input('How many products of this type did you buy? '))
+        date = input('Date for which you bought this product: ')
+
+        p1.buy(quantity, date) 
+        continue
+ 
+    if ans == 3: 
+
+        print(p1.inventory) 
+
+    if ans == 4: 
+        break 
+
 
