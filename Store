@@ -6,61 +6,39 @@ class Store(Product):
     inventory = Product.quantities
 
 
-    def __init__(self, ID, sale_price, purchase_price):
-        self.ID = ID
+    def __init__(self, id_, sale_price, purchase_price):
+        self.id_ = id_
         self.sale_price = sale_price
         self.purchase_price = purchase_price 
 
 
     def sell(self, quantity, date):
 
-        if quantity <= Store.inventory.get([self.ID]):
-            new_sale = [self.ID, self.sale_price, date, quantity]
+        if quantity <= Store.inventory.get([self.id_]):
+            new_sale[id_] = self.id_ 
+            new_sale[sale_price] = self.sale_price 
+            new_sale[date] = date
+            new_sale[quantity] = self.quantity
+
             Store.sales.append(new_sale) 
-            Store.inventory[self.ID] -= quantity
+
+            Store.inventory[self.id_] -= quantity
 
         return 'Sorry, we ran out of this product' 
 
 
     def buy(self, quantity, date):
-        new_purchase = [self.ID, self.purchase_price, date, quantity] 
+        new_purchase[id_] = self.id_ 
+        new_purchase[purchase_price_] = self.purchase_price 
+        new_purchase[date] = date
+        new_purchase[quantity] = self.quantity 
+        
         Store.purchases.append(new_purchase) 
-        Store.inventory[self.ID] += quantity 
+        Store.inventory[self.id_] += quantity 
 
 
     def get_inventory(cls):
         return cls.inventory 
         
-
-id_ = int(input("Press your product's ID: ")) 
-sale_price_ = int(input("Press your product's sale price: ")) 
-purchase_price_ = int(input("Press your product's purchase price: ")) 
-
-p1 = Store(id_, sale_price_, purchase_price_) 
-
-while ans != 4:
-    print('---------MENU----------')
-    ans = int(input('Press 1 to sell, press 2 to buy, press 3 to look at your inventory and press 4 to exit: ')) 
-
-    if ans == 1: 
-        quantity = int(input('How many products of this type did you sell? '))
-        date = input('Date for which you sold this product: ')
-        
-        p1.sell(quantity, date) 
-        continue
-       
-    if ans == 2: 
-        quantity = int(input('How many products of this type did you buy? '))
-        date = input('Date for which you bought this product: ')
-
-        p1.buy(quantity, date) 
-        continue
- 
-    if ans == 3: 
-
-        print(p1.inventory) 
-
-    if ans == 4: 
-        break 
 
 
