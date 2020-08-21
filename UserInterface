@@ -1,0 +1,74 @@
+from datetime import datetime
+
+print('---------MENU----------')
+ans = int(input('Press 1 to  create a product, press 2 to create a dictionary containing the amount of each product, press 3 to print the dictionary, press 4 to create a store, press 5 to sell, press 6 to buy, press 7 to look at your inventory, press 8 to exit: '))
+
+while ans != 8:
+    print('---------MENU----------')
+    ans = int(input('Press 1 to  create a product, press 2 to create a dictionary containing the amount of each product, press 3 to print the dictionary, press 4 to create a store, press 5 to sell, press 6 to buy, press 7 to look at your inventory, press 8 to exit: '))
+
+
+    if ans == 1:
+        name_ = input('Write the NAME of your product: ')
+        price_sale_ = int(input("Write your product's price of sale: "))
+        price_purchase_ = int(input("Write your product's purchase price: "))
+        barcode_ = input('Enter the barcode: ')
+        amount_ = int(input('How many products of this type are there? '))
+        type_price_ = input('Enter the way your product is being sold based on (weight, for example): ') 
+        nickname = input('How do you want to call your product? ')
+
+        nickname = Product(name_, price_sale_, price_purchase_, barcode_, amount_, type_price_)
+       
+        continue
+
+
+    if ans == 2: 
+            
+        nickname = input('What product are we dealing with? ')
+        id_ = input("ENTER YOUR PRODUCT'S ID")
+        nickname.product_amounts(id_) 
+
+        continue 
+
+    if ans == 3: 
+
+        nickname = input('What product are we dealing with? ')
+        print(nickname.quantities) 
+        
+        continue
+
+    if ans == 4: 
+        
+        id_ = input("Press your product's ID: ")
+        sale_price_ = int(input("Press your product's sale price: ")) 
+        purchase_price_ = int(input("Press your product's purchase price: ")) 
+        nickname = input('What do you call your store? ')
+
+        nickname = Store(id_, sale_price_, purchase_price_) 
+       
+        continue
+
+    if ans == 5: 
+
+        nickname = input('What product are we dealing with? ')
+        quantity = int(input('How many products of this type did you sell? '))
+        date = datetime.now()
+        
+        nickname.sell(quantity, date) 
+        
+        continue
+        
+    if ans == 6: 
+
+        nickname = input('What product are we dealing with? ')
+        quantity = int(input('How many products of this type did you buy? '))
+        date = datetime.now()
+
+        nickname.buy(quantity, date) 
+        
+        continue
+
+    if ans == 7: 
+        nickname = input('What product are we dealing with? ')
+
+        print(nickname.inventory)
