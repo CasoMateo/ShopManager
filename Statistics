@@ -1,0 +1,125 @@
+def least_sold(sales):
+    
+    freq = {} 
+
+    for sale in sales: 
+        id_ = sale['ID']
+        freq[id_] = freq.get(id_, 0) + 1 
+
+    min_ = float('inf') 
+    min_id_ = " " 
+
+    for prod_id_, count in freq.items():
+        if count <= min_:
+            min_ = count 
+            min_id_ = prod_id_ 
+
+    return min_id_ 
+    
+
+def most_sold(sales):
+    
+    freq = {} 
+
+    for sale in sales: 
+        id_ = sale['ID']
+        freq[id_] = freq.get(id_, 0) + 1 
+
+    max_ = 0 
+    max_id_ = " " 
+
+    for prod_id_, count in freq.items():
+        if count >= max_:
+            max_ = count 
+            max_id_ = prod_id_ 
+
+    return max_id_ 
+
+
+def most_common_hour(sales):
+    freq = {} 
+
+    for sale in sales: 
+        date = sale['DATE']
+        hour = date.hour 
+        freq[hour] = freq.get(hour, 0) + 1 
+
+    max_ = 0 
+    max_hour_ = " " 
+
+    for hour, count in freq.items():
+        if count >= max_:
+            max_ = count 
+            max_hour_ = hour 
+
+    return max_hour_ 
+
+
+def most_common_day(sales):
+    freq = {} 
+
+    for sale in sales: 
+        date = sale['DATE']
+        day = date.day 
+        freq[day] = freq.get(day, 0) + 1 
+
+    max_ = 0 
+    max_day_ = " " 
+
+    for day, count in freq.items():
+        if count >= max_:
+            max_ = count 
+            max_day_ = day 
+
+    return max_day_ 
+
+
+def max_num_sales(sales):
+    freq = {}
+    
+    for sale in sales:
+        id_ = sale['ID'] 
+        freq[id_] += freq.get(id_, 0) + sale['QUANTITY'] 
+
+    max_ = 0 
+    max_id_ = ' '
+
+    for prod_id_, count in freq.items():
+        if count >= max_: 
+            max_ = count 
+            max_id_ = prod_id_ 
+
+    return max_id_ + ':' + max_ 
+
+
+def min_num_sales(sales):
+    freq = {}
+    
+    for sale in sales:
+        id_ = sale['ID'] 
+        freq[id_] += freq.get(id_, 0) + sale['QUANTITY'] 
+
+    min_ = float('inf')
+    min_id_ = ' '
+
+    for prod_id_, count in freq.items():
+        if count <= min_: 
+            min_ = count 
+            min_id_ = prod_id_ 
+
+    return min_id_ + ':' + min_ 
+
+
+def reorder(inventory, sales, purchases):
+    freq_sales = {}
+    reorder_ = 10 
+    num_pro_buy = {}
+
+    for sale in sales: 
+        id_ = sale['ID'] 
+        freq_sales[id_] = freq_sales.get(id_, 0) + sale['QUANTITY'] 
+
+    for product in inventory:
+        num_pro_buy[product] = freq_sales[product] - inventory[product] + reorder_
+
+    return num_pro_buy
