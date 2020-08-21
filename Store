@@ -18,7 +18,7 @@ class Store(Product):
             new_sale[id_] = self.id_ 
             new_sale[sale_price] = self.sale_price 
             new_sale[date] = date
-            new_sale[quantity] = self.quantity
+            new_sale[quantity] = quantity
 
             Store.sales.append(new_sale) 
 
@@ -31,7 +31,7 @@ class Store(Product):
         new_purchase[id_] = self.id_ 
         new_purchase[purchase_price_] = self.purchase_price 
         new_purchase[date] = date
-        new_purchase[quantity] = self.quantity 
+        new_purchase[quantity] = quantity 
         
         Store.purchases.append(new_purchase) 
         Store.inventory[self.id_] += quantity 
