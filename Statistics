@@ -1,3 +1,5 @@
+product_reorder = {}
+
 def least_sold(sales):
     
     freq = {} 
@@ -110,16 +112,39 @@ def min_num_sales(sales):
     return min_id_ + ':' + min_ 
 
 
-def reorder(inventory, sales, purchases):
-    freq_sales = {}
-    reorder_ = 10 
-    num_pro_buy = {}
+def reorder(id_, reorder):
+
+    product_reorder[id_] = reorder 
+    
+   
+def total_spent(purchases)
+
+    spent_product = {}
+
+    for purchase in purchases: 
+        price = purchase['PURCHASE_PRICE'] 
+        id_ = purchase['ID']
+        spent_product[id_] = spent_product.get(id_, 0) + price 
+
+    return spent_product 
+
+
+def total_gained(sales)
+
+    gained_product = {}
 
     for sale in sales: 
-        id_ = sale['ID'] 
-        freq_sales[id_] = freq_sales.get(id_, 0) + sale['QUANTITY'] 
+        price = sale['PURCHASE_PRICE'] 
+        id_ = sale['ID']
+        gained_product[id_] = gained_product.get(id_, 0) + price 
 
-    for product in inventory:
-        num_pro_buy[product] = freq_sales[product] - inventory[product] + reorder_
+    return gained_product 
 
-    return num_pro_buy
+def total_profit(gained_product, spent_product, id_):
+
+    profit_product = {} 
+
+    for id_ in gained_product:  
+        profit_product[id_] = gained_product[id_] - spent_product[id_] 
+
+    return id_ + ':' + profit_product[id_]
