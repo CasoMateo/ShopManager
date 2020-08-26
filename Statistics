@@ -1,4 +1,5 @@
 product_reorder = {}
+inventory = Store.inventory
 
 def least_sold(sales):
     
@@ -112,9 +113,13 @@ def min_num_sales(sales):
     return min_id_ + ':' + min_ 
 
 
-def reorder(id_, reorder):
+def reorder(id_, reorder, inventory):
 
     product_reorder[id_] = reorder 
+    
+    if inventory.get(id_) <= product_reorder.get(id_): 
+        print('You should order more items of this product, press 6 
+        and follow instructions')
     
    
 def total_spent(purchases)
