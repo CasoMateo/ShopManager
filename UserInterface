@@ -63,5 +63,89 @@ while ans != 8:
         continue
 
     if ans == 7: 
-
         print(s1.inventory)
+        
+    if ans == 8:
+        sales = {}
+        sales[id_] = input('ID: ')
+        sales[sale_price_] = int(input('SALE_PRICE: '))
+        sales[date] = datetime.now()
+        sales[quantity] = int(input('QUANTITY: ')) 
+
+        print(least_sold(sales)) 
+
+    if ans == 9:
+        sales = {}
+        sales[id_] = input('ID: ')
+        sales[sale_price_] = int(input('SALE_PRICE: '))
+        sales[date] = datetime.now()
+        sales[quantity] = int(input('QUANTITY: ')) 
+
+        print(most_sold(sales)) 
+
+    if ans == 10:
+        sales = {}
+        sales[id_] = input('ID: ')
+        sales[sale_price_] = int(input('SALE_PRICE: '))
+        sales[date] = datetime.now()
+        sales[quantity] = int(input('QUANTITY: ')) 
+
+        print(most_common_hour(sales)) 
+
+    if ans == 11: 
+        sales = {}
+        sales[id_] = input('ID: ')
+        sales[sale_price_] = int(input('SALE_PRICE: '))
+        sales[date] = datetime.now()
+        sales[quantity] = int(input('QUANTITY: ')) 
+
+        print(most_common_day(sales)) 
+
+    if ans == 12: 
+        sales = {}
+        sales[id_] = input('ID: ')
+        sales[sale_price_] = int(input('SALE_PRICE: '))
+        sales[date] = datetime.now()
+        sales[quantity] = int(input('QUANTITY: ')) 
+
+        print(max_num_sales(sales))  
+
+    if ans == 13: 
+        sales = {}
+        sales[id_] = input('ID: ')
+        sales[sale_price_] = int(input('SALE_PRICE: '))
+        sales[date] = datetime.now()
+        sales[quantity] = int(input('QUANTITY: ')) 
+
+        print(min_num_sales(sales)) 
+
+    if ans == 14: 
+        id_ = input('ID: ')
+        reorder = int(input("What's your reorder for this product: "))
+
+        reorder(id_, reorder)
+        print(min_num_sales(sales)) 
+
+    if ans == 15: 
+        purchases = {}
+        purchases[id_] = input('ID: ')
+        purchases[purchase_price_] = int(input('PURCHASE_PRICE: '))
+        purchases[date] = datetime.now()
+        purchases[quantity] = int(input('QUANTITY: ')) 
+
+        spent_product = total_spent(purchases)
+        print(total_spent(purchases)) 
+
+    if ans == 16: 
+        sales = {}
+        sales[id_] = input('ID: ')
+        sales[sale_price_] = int(input('SALE_PRICE: '))
+        sales[date] = datetime.now()
+        sales[quantity] = int(input('QUANTITY: ')) 
+
+        gained_product = total_gained(sales)
+        print(total_gained(sales)) 
+
+    if ans == 17: 
+
+        print(profit(gained_product, spent_product)) 
