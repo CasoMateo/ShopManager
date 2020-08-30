@@ -143,11 +143,11 @@ def total_gained(sales)
 
     return gained_product 
 
-def total_profit(gained_product, spent_product, id_):
+def total_profit(gained_product, spent_product):
 
     profit_product = {} 
 
     for id_ in gained_product:  
-        profit_product[id_] = gained_product[id_] - spent_product[id_] 
+        profit_product[id_] = gained_product[id_] - spent_product.get(id_, 0) + 0 
 
-    return id_ + ':' + profit_product[id_]
+    return profit_product
