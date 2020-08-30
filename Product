@@ -24,29 +24,3 @@ class Product:
         return cls.quantities 
         
         
-name_ = input('Write the NAME of your product: ')
-price_sale_ = int(input("Write your product's price of sale: "))
-price_purchase_ = int(input("Write your product's purchase price: "))
-barcode_ = input('Enter the barcode: ')
-amount_ = int(input('How many products of this type are there? '))
-type_price_ = input('Enter the way your product is being sold based on (weight, for example): ')
-
-p1 = Product(name_, price_sale_, price_purchase_, barcode_, amount_, type_price_)
-
-while ans != 3:
-      print('---------MENU----------')
-      ans = int(input('Press 1 to  create a dictionary containing the amount of each product, press 2 to print the dictionary, press 3 to exit: '))
-
-      if ans == 1: 
-            
-          id_ = int(input("ENTER YOUR PRODUCT'S ID"))
-          p1.product_amounts(id_) 
-
-          continue 
-
-      if ans == 2: 
-
-         print(p1.quantities) 
-
-      if ans == 3: 
-         break 
