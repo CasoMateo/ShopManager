@@ -1,0 +1,313 @@
+import tkinter
+from tkinter import ttk
+from tkinter import messagebox
+import datetime 
+from ProductDesign import *
+from StoreDesign import *
+from Statistics import *
+ 
+
+window = tkinter.Tk()
+
+window.title("Punto de venta")
+
+window.geometry('400x600')
+
+label = tkinter.Label(window, text="Punto de Venta", fg="blue", font =('Arial Bold', 43))
+label.grid(column=2, row=0)
+
+def accion(): 
+    current = combobox.get()
+
+    if  current == 'Registrar producto':
+        label1.set('Nombre del producto')
+        label2.set('Precio de compra')
+        label3.set('Precio de venta')
+        label4.set('Código de barras')
+        label5.set('Cantidad')
+        label6.set('Tipo de venta (unidad, peso)')
+
+        name = entry1.get()
+        price_sale_ = entry2.get()
+        price_purchase_ = entry3.get()
+        barcode_ = entry4.get()
+        amount_ = entry5.get()
+        type_price_ = entry6.get()
+
+
+        p1 = Product(name_, price_sale_, price_purchase_, barcode_, amount_, type_price_)
+
+
+    elif current == 'Cantidades-Producto':
+        label1.set('ID del producto')
+        label2.set('No pongas nada')
+        label3.set('No pongas nada')
+        label4.set('No pongas nada')
+        label5.set('No pongas nada')
+        label6.set('No pongas nada')
+
+        id_ = entry1.get()
+
+        p1.product_amounts(id_)
+
+
+    elif current == 'Cantidades':
+        label1.set('No pongas nada')
+        label2.set('No pongas nada') 
+        label3.set('No pongas nada')
+        label4.set('No pongas nada') 
+        label5.set('No pongas nada')
+        label6.set('No pongas nada')
+
+        print(p1.quantities)
+
+    elif current == 'Registrar tienda':
+        label1.set('Num productos en la tienda')
+        label2.set('Num empleados') 
+        label3.set('Tamaño de la tienda')
+        label4.set('No pongas nada') 
+        label5.set('No pongas nada')
+        label6.set('No pongas nada')
+
+        employees = entry1.get()
+        num_products = entry2.get()
+        size = entry3.get()
+        
+        s1 = Store(employees, num_products, size)
+
+    elif current == 'Vender': 
+        label1.set('Cantidad')
+        label2.set('ID producto') 
+        label3.set('Precio venta')
+        label4.set('No pongas nada') 
+        label5.set('No pongas nada')
+        label6.set('No pongas nada')
+
+        quantity = entry1.get()
+        date = datetime.now()
+        id_ = entry2.get()
+        price_sale_ = entry3.get()
+
+        s1.sell(quantity, date, id_, price_sale_)
+
+    elif current == 'Comprar':
+        label1.set('Candidad')
+        label2.set('ID producto') 
+        label3.set('Precio compra')
+        label4.set('No pongas nada') 
+        label5.set('No pongas nada')
+        label6.set('No pongas nada')
+
+        quantity = entry1.get()
+        date = datetime.now()
+        id_ = entry2.get()
+        purchase_price_ = entry3.get() 
+
+        s1.buy(quantity, date, id_, purchase_price_)
+
+
+    elif current == 'Inventario':
+        label1.set('No pongas nada')
+        label2.set('No pongas nada') 
+        label3.set('No pongas nada')
+        label4.set('No pongas nada') 
+        label5.set('No pongas nada')
+        label6.set('No pongas nada')
+
+        print(s1.inventory)
+
+    elif current == 'Menos ventas-producto':
+        label1.set('ID del producto')
+        label2.set('Precio de venta') 
+        label3.set('Cantidad')
+        label4.set('No pongas nada') 
+        label5.set('No pongas nada')
+        label6.set('No pongas nada')
+
+        sales = {}
+        sales[id_] = entry1.get()
+        sales[price_sale_] = entry2.get()
+        sales[date] = dattime.now() 
+        sales[quantity] = entry3.get()
+
+        print(Statistics.least_sold(sales)) 
+
+    elif current == 'Más ventas-producto': 
+        label1.set('ID del producto')
+        label2.set('Precio de venta') 
+        label3.set('Cantidad')
+        label4.set('No pongas nada') 
+        label5.set('No pongas nada')
+        label6.set('No pongas nada')
+
+        sales = {}
+        sales[id_] = entry1.get()
+        sales[price_sale_] = entry2.get()
+        sales[date] = dattime.now() 
+        sales[quantity] = entry3.get()
+
+        print(Statistics.most_sold(sales)) 
+
+
+    elif current == 'Hora más común':
+        label1.set('ID del producto')
+        label2.set('Precio de venta') 
+        label3.set('Cantidad')
+        label4.set('No pongas nada') 
+        label5.set('No pongas nada')
+        label6.set('No pongas nada')
+
+        sales = {}
+        sales[id_] = entry1.get()
+        sales[price_sale_] = entry2.get()
+        sales[date] = dattime.now() 
+        sales[quantity] = entry3.get()
+
+        print(Statistics.most_common_hour(sales)) 
+
+    elif current == 'Día más común':
+        label1.set('ID del producto')
+        label2.set('Precio de venta') 
+        label3.set('Cantidad')
+        label4.set('No pongas nada') 
+        label5.set('No pongas nada')
+        label6.set('No pongas nada')
+
+        sales = {}
+        sales[id_] = entry1.get()
+        sales[price_sale_] = entry2.get()
+        sales[date] = dattime.now() 
+        sales[quantity] = entry3.get()
+
+        print(Statistics.most_common_day(sales)) 
+
+    elif current == 'Más productos vendidos':
+        label1.set('ID del producto')
+        label2.set('Precio de venta') 
+        label3.set('Cantidad')
+        label4.set('No pongas nada') 
+        label5.set('No pongas nada')
+        label6.set('No pongas nada')
+
+        sales = {}
+        sales[id_] = entry1.get()
+        sales[price_sale_] = entry2.get()
+        sales[date] = dattime.now() 
+        sales[quantity] = entry3.get()
+
+        print(Statistics.max_num_sales(sales)) 
+
+    elif current == 'Menos productos vendidos':
+        label1.set('ID del producto')
+        label2.set('Precio de venta') 
+        label3.set('Cantidad')
+        label4.set('No pongas nada') 
+        label5.set('No pongas nada')
+        label6.set('No pongas nada')
+
+        sales = {}
+        sales[id_] = entry1.get()
+        sales[price_sale_] = entry2.get()
+        sales[date] = dattime.now() 
+        sales[quantity] = entry3.get()
+
+        print(Statistics.min_num_sales(sales)) 
+
+    elif current == 'Reorden':
+        label1.set('ID del producto')
+        label2.set('Punto de reorden') 
+        label3.set('No pongas nada')
+        label4.set('No pongas nada') 
+        label5.set('No pongas nada')
+        label6.set('No pongas nada')
+
+        id_ = entry1.get()
+        reorder = entry2.get() 
+
+        Statistics.reorder(id_, reorder)
+
+    elif current == 'Gastado':
+        label1.set('ID del producto')
+        label2.set('Precio de compra') 
+        label3.set('Cantidad')
+        label4.set('No pongas nada') 
+        label5.set('No pongas nada')
+        label6.set('No pongas nada')
+
+        sales = {}
+        sales[id_] = entry1.get()
+        sales[price_purchase_] = entry2.get()
+        sales[date] = dattime.now() 
+        sales[quantity] = entry3.get()
+
+        spent_product = Statistics.total_spent(sales)
+        print(spent_product) 
+
+    elif current == 'Ganado':
+        label1.set('ID del producto')
+        label2.set('Precio de venta') 
+        label3.set('Cantidad')
+        label4.set('No pongas nada') 
+        label5.set('No pongas nada')
+        label6.set('No pongas nada') 
+
+        sales = {}
+        sales[id_] = entry1.get()
+        sales[price_sale_] = entry2.get()
+        sales[date] = dattime.now() 
+        sales[quantity] = entry3.get()
+
+        gained_product = Statistics.total_gained(sales)
+        print(gained_product)
+
+    elif current == 'Utilidad': 
+
+        label1.set('No pongas nada')
+        label2.set('No pongas nada') 
+        label3.set('No pongas nada')
+        label4.set('No pongas nada') 
+        label5.set('No pongas nada')
+        label6.set('No pongas nada')
+
+        print(Statistics.profit(gained_product, spent_product))
+
+
+combobox = ttk.Combobox(window)
+combobox['values'] = ('Registrar producto','Cantidades-Producto','Cantidades','Registrar tienda','Vender','Comprar','Inventario','Menos ventas-producto','Más ventas-producto','Hora más común','Día más común','Más productos vendidos','Menos productos vendidos','Reorden', 'Gastado','Ganado','Utilidad')
+combobox.grid(column=2, row=2) 
+
+entry1 = tkinter.StringVar() 
+entry2 = tkinter.StringVar()
+entry3 = tkinter.StringVar() 
+entry4 = tkinter.StringVar()
+entry5 = tkinter.StringVar()
+entry6 = tkinter.StringVar()
+
+label1 = tkinter.StringVar()
+label2 = tkinter.StringVar()
+label3 = tkinter.StringVar()
+label4 = tkinter.StringVar()
+label5 = tkinter.StringVar()
+label6 = tkinter.StringVar()
+
+
+tkinter.Entry(textvariable=entry1, width='50').grid(column=2, row=15)
+tkinter.Entry(textvariable=entry2, width='50').grid(column=2, row=25) 
+tkinter.Entry(textvariable=entry3, width='50').grid(column=2, row=35) 
+tkinter.Entry(textvariable=entry4, width='50').grid(column=2, row=45) 
+tkinter.Entry(textvariable=entry5, width='50').grid(column=2, row=55) 
+tkinter.Entry(textvariable=entry6, width='50').grid(column=2, row=65) 
+
+tkinter.Label(window, textvariable=label1).grid(column=2, row=10)
+tkinter.Label(window, textvariable=label2).grid(column=2, row=20) 
+tkinter.Label(window, textvariable=label3).grid(column=2, row=30) 
+tkinter.Label(window, textvariable=label4).grid(column=2, row=40) 
+tkinter.Label(window, textvariable=label5).grid(column=2, row=50) 
+tkinter.Label(window, textvariable=label6).grid(column=2, row=60) 
+
+
+btn = ttk.Button(window, text = 'Get value', command=accion) 
+btn.grid(column=2, row=5)
+
+
+window.mainloop()
