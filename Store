@@ -6,35 +6,38 @@ class Store(Product):
     inventory = Product.quantities
 
 
-    def __init__(self, id_, sale_price, purchase_price):
-        self.id_ = id_
-        self.sale_price = sale_price
-        self.purchase_price = purchase_price 
+    def __init__(self, employees, num_products, size):
+        self.employees = employees
+        self.num_products = num_products
+        self.size = size 
 
 
-    def sell(self, quantity, date):
+    def sell(self, quantity, date, id_, sale_price_):
+        new_sale = {}
 
-        if quantity <= Store.inventory.get([self.id_]):
-            new_sale[id_] = self.id_ 
-            new_sale[sale_price] = self.sale_price 
-            new_sale[date] = date
-            new_sale[quantity] = quantity
+        if quantity <= Store.inventory.get([id_]):
+            new_sale[_id_] = id_
+            new_sale[sale_price] = sale_price_
+            new_sale[date_] = date
+            new_sale[quantity_] = quantity
 
             Store.sales.append(new_sale) 
 
-            Store.inventory[self.id_] -= quantity
+            Store.inventory[id_] -= quantity
 
         return 'Sorry, we ran out of this product' 
 
 
-    def buy(self, quantity, date):
-        new_purchase[id_] = self.id_ 
-        new_purchase[purchase_price_] = self.purchase_price 
+    def buy(self, quantity, date, id_, purchase_price_):
+        new_purchase = {}
+        
+        new_purchase[_id_] = id_ 
+        new_purchase[purchase_price] = purchase_price_ 
         new_purchase[date] = date
         new_purchase[quantity] = quantity 
         
         Store.purchases.append(new_purchase) 
-        Store.inventory[self.id_] += quantity 
+        Store.inventory[id_] += quantity 
 
 
     def get_inventory(cls):
