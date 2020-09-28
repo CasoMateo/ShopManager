@@ -4,7 +4,7 @@ def least_sold(sales):
     freq = {} 
 
     for sale in sales: 
-        id_ = sale['ID']
+        id_ = sale['id_']
         freq[id_] = freq.get(id_, 0) + 1 
 
     min_ = float('inf') 
@@ -23,7 +23,7 @@ def most_sold(sales):
     freq = {} 
 
     for sale in sales: 
-        id_ = sale['ID']
+        id_ = sale['id_']
         freq[id_] = freq.get(id_, 0) + 1 
 
     max_ = 0 
@@ -41,7 +41,7 @@ def most_common_hour(sales):
     freq = {} 
 
     for sale in sales: 
-        date = sale['DATE']
+        date = sale['date']
         hour = date.hour 
         freq[hour] = freq.get(hour, 0) + 1 
 
@@ -60,7 +60,7 @@ def most_common_day(sales):
     freq = {} 
 
     for sale in sales: 
-        date = sale['DATE']
+        date = sale['date']
         day = date.day 
         freq[day] = freq.get(day, 0) + 1 
 
@@ -79,8 +79,8 @@ def max_num_sales(sales):
     freq = {}
     
     for sale in sales:
-        id_ = sale['ID'] 
-        freq[id_] += freq.get(id_, 0) + sale['QUANTITY'] 
+        id_ = sale['id_'] 
+        freq[id_] += freq.get(id_, 0) + sale['quantity'] 
 
     max_ = 0 
     max_id_ = ' '
@@ -97,8 +97,8 @@ def min_num_sales(sales):
     freq = {}
     
     for sale in sales:
-        id_ = sale['ID'] 
-        freq[id_] += freq.get(id_, 0) + sale['QUANTITY'] 
+        id_ = sale['id_'] 
+        freq[id_] += freq.get(id_, 0) + sale['quantity'] 
 
     min_ = float('inf')
     min_id_ = ' '
@@ -125,8 +125,8 @@ def total_spent(purchases)
     spent_product = {}
 
     for purchase in purchases: 
-        price = purchase['PURCHASE_PRICE'] 
-        id_ = purchase['ID']
+        price = purchase['price_purchase_'] 
+        id_ = purchase['id_']
         spent_product[id_] = spent_product.get(id_, 0) + price 
 
     return spent_product 
@@ -137,8 +137,8 @@ def total_gained(sales)
     gained_product = {}
 
     for sale in sales: 
-        price = sale['PURCHASE_PRICE'] 
-        id_ = sale['ID']
+        price = sale['price_sale_'] 
+        id_ = sale['id_']
         gained_product[id_] = gained_product.get(id_, 0) + price 
 
     return gained_product 
