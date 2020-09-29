@@ -9,37 +9,37 @@ from Statistics import *
 
 window = tkinter.Tk()
 
-window.title("Punto de venta")
+window.title("ShopManager")
 
 window.geometry('400x600')
 
-label = tkinter.Label(window, text="Punto de Venta", fg="blue", font =('Arial Bold', 43))
+label = tkinter.Label(window, text="ShopManager", fg="blue", font =('Arial Bold', 43))
 label.grid(column=2, row=0)
 
 def accion(): 
     current = combobox.get()
 
-    if  current == 'Registrar producto':
-        label1.set('Nombre del producto')
-        label2.set('Precio de compra')
-        label3.set('Precio de venta')
-        label4.set('Código de barras')
-        label5.set('Cantidad')
-        label6.set('Tipo de venta (unidad, peso)')
+    if  current == 'Register product':
+        label1.set('Name')
+        label2.set('Price sale')
+        label3.set('Price purchase')
+        label4.set('Barcode')
+        label5.set('Amount')
+        label6.set('Type of price (weight, unit)')
 
         name = entry1.get()
-        price_sale_ = entry2.get()
-        price_purchase_ = entry3.get()
-        barcode_ = entry4.get()
-        amount_ = entry5.get()
-        type_price_ = entry6.get()
+        price_sale = entry2.get()
+        price_purchase = entry3.get()
+        barcode = entry4.get()
+        amount = entry5.get()
+        type_price = entry6.get()
 
 
-        p1 = Product(name_, price_sale_, price_purchase_, barcode_, amount_, type_price_)
+        p1 = Product(name, price_sale, price_purchase, barcode, amount, type_price)
 
 
-    elif current == 'Cantidades-Producto':
-        label1.set('ID del producto')
+    elif current == 'Amount-Product':
+        label1.set('Product ID')
         label2.set('No pongas nada')
         label3.set('No pongas nada')
         label4.set('No pongas nada')
@@ -51,7 +51,7 @@ def accion():
         p1.product_amounts(id_)
 
 
-    elif current == 'Cantidades':
+    elif current == 'Amount':
         label1.set('No pongas nada')
         label2.set('No pongas nada') 
         label3.set('No pongas nada')
@@ -61,10 +61,10 @@ def accion():
 
         print(p1.quantities)
 
-    elif current == 'Registrar tienda':
-        label1.set('Num productos en la tienda')
-        label2.set('Num empleados') 
-        label3.set('Tamaño de la tienda')
+    elif current == 'Register store':
+        label1.set('Num employees')
+        label2.set('Num products') 
+        label3.set('Size')
         label4.set('No pongas nada') 
         label5.set('No pongas nada')
         label6.set('No pongas nada')
@@ -75,10 +75,10 @@ def accion():
         
         s1 = Store(employees, num_products, size)
 
-    elif current == 'Vender': 
-        label1.set('Cantidad')
-        label2.set('ID producto') 
-        label3.set('Precio venta')
+    elif current == 'Sell': 
+        label1.set('Amount')
+        label2.set('Product ID') 
+        label3.set('Price sale')
         label4.set('No pongas nada') 
         label5.set('No pongas nada')
         label6.set('No pongas nada')
@@ -86,14 +86,14 @@ def accion():
         quantity = entry1.get()
         date = datetime.now()
         id_ = entry2.get()
-        price_sale_ = entry3.get()
+        sale_price_ = entry3.get()
 
-        s1.sell(quantity, date, id_, price_sale_)
+        s1.sell(quantity, date, id_, sale_price_)
 
-    elif current == 'Comprar':
-        label1.set('Candidad')
-        label2.set('ID producto') 
-        label3.set('Precio compra')
+    elif current == 'Buy':
+        label1.set('Amount')
+        label2.set('Product ID') 
+        label3.set('Price purchase')
         label4.set('No pongas nada') 
         label5.set('No pongas nada')
         label6.set('No pongas nada')
@@ -106,7 +106,7 @@ def accion():
         s1.buy(quantity, date, id_, purchase_price_)
 
 
-    elif current == 'Inventario':
+    elif current == 'Inventory':
         label1.set('No pongas nada')
         label2.set('No pongas nada') 
         label3.set('No pongas nada')
@@ -116,10 +116,10 @@ def accion():
 
         print(s1.inventory)
 
-    elif current == 'Menos ventas-producto':
-        label1.set('ID del producto')
-        label2.set('Precio de venta') 
-        label3.set('Cantidad')
+    elif current == 'Least sales-product':
+        label1.set('Product ID')
+        label2.set('Price sale') 
+        label3.set('Amount')
         label4.set('No pongas nada') 
         label5.set('No pongas nada')
         label6.set('No pongas nada')
@@ -127,15 +127,15 @@ def accion():
         sales = {}
         sales[id_] = entry1.get()
         sales[price_sale_] = entry2.get()
-        sales[date] = dattime.now() 
+        sales[date] = datetime.now() 
         sales[quantity] = entry3.get()
 
         print(Statistics.least_sold(sales)) 
 
-    elif current == 'Más ventas-producto': 
-        label1.set('ID del producto')
-        label2.set('Precio de venta') 
-        label3.set('Cantidad')
+    elif current == 'Most sales-product': 
+        label1.set('Product ID')
+        label2.set('Price sale') 
+        label3.set('Amount')
         label4.set('No pongas nada') 
         label5.set('No pongas nada')
         label6.set('No pongas nada')
@@ -143,16 +143,16 @@ def accion():
         sales = {}
         sales[id_] = entry1.get()
         sales[price_sale_] = entry2.get()
-        sales[date] = dattime.now() 
+        sales[date] = datetime.now() 
         sales[quantity] = entry3.get()
 
         print(Statistics.most_sold(sales)) 
 
 
-    elif current == 'Hora más común':
-        label1.set('ID del producto')
-        label2.set('Precio de venta') 
-        label3.set('Cantidad')
+    elif current == 'Most common hour':
+        label1.set('Product ID')
+        label2.set('Price sale') 
+        label3.set('Amount')
         label4.set('No pongas nada') 
         label5.set('No pongas nada')
         label6.set('No pongas nada')
@@ -160,15 +160,15 @@ def accion():
         sales = {}
         sales[id_] = entry1.get()
         sales[price_sale_] = entry2.get()
-        sales[date] = dattime.now() 
+        sales[date] = datetime.now() 
         sales[quantity] = entry3.get()
 
         print(Statistics.most_common_hour(sales)) 
 
-    elif current == 'Día más común':
-        label1.set('ID del producto')
-        label2.set('Precio de venta') 
-        label3.set('Cantidad')
+    elif current == 'Most common day':
+        label1.set('Product ID')
+        label2.set('Price sale') 
+        label3.set('Amount')
         label4.set('No pongas nada') 
         label5.set('No pongas nada')
         label6.set('No pongas nada')
@@ -176,15 +176,15 @@ def accion():
         sales = {}
         sales[id_] = entry1.get()
         sales[price_sale_] = entry2.get()
-        sales[date] = dattime.now() 
+        sales[date] = datetime.now() 
         sales[quantity] = entry3.get()
 
         print(Statistics.most_common_day(sales)) 
 
-    elif current == 'Más productos vendidos':
-        label1.set('ID del producto')
-        label2.set('Precio de venta') 
-        label3.set('Cantidad')
+    elif current == 'Most products sold':
+        label1.set('Product ID')
+        label2.set('Price sale') 
+        label3.set('Amount')
         label4.set('No pongas nada') 
         label5.set('No pongas nada')
         label6.set('No pongas nada')
@@ -192,15 +192,15 @@ def accion():
         sales = {}
         sales[id_] = entry1.get()
         sales[price_sale_] = entry2.get()
-        sales[date] = dattime.now() 
+        sales[date] = datetime.now() 
         sales[quantity] = entry3.get()
 
         print(Statistics.max_num_sales(sales)) 
 
-    elif current == 'Menos productos vendidos':
-        label1.set('ID del producto')
-        label2.set('Precio de venta') 
-        label3.set('Cantidad')
+    elif current == 'Least products sold':
+        label1.set('Product ID')
+        label2.set('Price sale') 
+        label3.set('Amount')
         label4.set('No pongas nada') 
         label5.set('No pongas nada')
         label6.set('No pongas nada')
@@ -208,14 +208,14 @@ def accion():
         sales = {}
         sales[id_] = entry1.get()
         sales[price_sale_] = entry2.get()
-        sales[date] = dattime.now() 
+        sales[date] = datetime.now() 
         sales[quantity] = entry3.get()
 
         print(Statistics.min_num_sales(sales)) 
 
-    elif current == 'Reorden':
-        label1.set('ID del producto')
-        label2.set('Punto de reorden') 
+    elif current == 'Reorder':
+        label1.set('Product ID')
+        label2.set('Reorder') 
         label3.set('No pongas nada')
         label4.set('No pongas nada') 
         label5.set('No pongas nada')
@@ -226,10 +226,10 @@ def accion():
 
         Statistics.reorder(id_, reorder)
 
-    elif current == 'Gastado':
-        label1.set('ID del producto')
-        label2.set('Precio de compra') 
-        label3.set('Cantidad')
+    elif current == 'Spent':
+        label1.set('Product ID')
+        label2.set('Price purchase') 
+        label3.set('Amount')
         label4.set('No pongas nada') 
         label5.set('No pongas nada')
         label6.set('No pongas nada')
@@ -237,30 +237,30 @@ def accion():
         sales = {}
         sales[id_] = entry1.get()
         sales[price_purchase_] = entry2.get()
-        sales[date] = dattime.now() 
+        sales[date] = datetime.now() 
         sales[quantity] = entry3.get()
 
         spent_product = Statistics.total_spent(sales)
         print(spent_product) 
 
-    elif current == 'Ganado':
-        label1.set('ID del producto')
-        label2.set('Precio de venta') 
-        label3.set('Cantidad')
+    elif current == 'Gained':
+        label1.set('Product ID')
+        label2.set('Price sale') 
+        label3.set('Amount')
         label4.set('No pongas nada') 
         label5.set('No pongas nada')
-        label6.set('No pongas nada') 
+        label6.set('No pongas nada')
 
         sales = {}
         sales[id_] = entry1.get()
         sales[price_sale_] = entry2.get()
-        sales[date] = dattime.now() 
+        sales[date] = datetime.now() 
         sales[quantity] = entry3.get()
 
         gained_product = Statistics.total_gained(sales)
         print(gained_product)
 
-    elif current == 'Utilidad': 
+    elif current == 'Profit': 
 
         label1.set('No pongas nada')
         label2.set('No pongas nada') 
@@ -273,7 +273,7 @@ def accion():
 
 
 combobox = ttk.Combobox(window)
-combobox['values'] = ('Registrar producto','Cantidades-Producto','Cantidades','Registrar tienda','Vender','Comprar','Inventario','Menos ventas-producto','Más ventas-producto','Hora más común','Día más común','Más productos vendidos','Menos productos vendidos','Reorden', 'Gastado','Ganado','Utilidad')
+combobox['values'] = ('Register product','Quantity-Product','Quantity','Register store','Sell','Buy','Inventory','Least sales-product','Most sales-product','Most common hour','Most common day','Most products sold','Least products sold','Reorder', 'Spent','Gained','Profit')
 combobox.grid(column=2, row=2) 
 
 entry1 = tkinter.StringVar() 
